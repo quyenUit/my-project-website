@@ -28,7 +28,7 @@ Book.get_all = function (result) {
 
 Book.getById = function (id, result) {
   db.query("SELECT * FROM book WHERE id = ?", id, function (err, book) {
-    if (err || book.leng == 0) {
+    if (err || book.length == 0) {
       result(null);
     } else {
       result(book[0]);
@@ -45,7 +45,7 @@ Book.create = function (data, result) {
     if (err) {
       result(null);
     } else {
-      result({ id: book.insertId, ...data });
+      result({ id: res.insertId, ...data });
     }
   });
 };
@@ -71,6 +71,7 @@ Book.update = function (b, result) {
     function (err, book) {
       if (err) {
         result(null);
+        console.log("khong thnah cong");
       } else {
         result(b);
       }
