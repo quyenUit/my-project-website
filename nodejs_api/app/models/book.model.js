@@ -45,7 +45,7 @@ Book.create = function (data, result) {
     if (err) {
       result(null);
     } else {
-      result({ id: res.insertId, ...data });
+      result({ id: book.insertId, ...data });
     }
   });
 };
@@ -53,7 +53,7 @@ Book.create = function (data, result) {
 Book.remove = function (id, result) {
   // result("xoa bo co id " + id + " thanh cong");
 
-  db.query("DELETE * FROM book WHERE id = ?", id, function (err, book) {
+  db.query("DELETE FROM book WHERE id = ?", id, function (err, book) {
     if (err) {
       result(null);
     } else {
